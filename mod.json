@@ -1,0 +1,21 @@
+{
+	"geode": "5.0.0",
+	"gd": {
+		"android": "2.2081"
+	},
+	"id": "sunlnwza007.fps-unlock",
+	"name": "FPS Unlock",
+	"version": "v1.0.0",
+	"developer": "sunlnwza007",
+	"description": "Sets a custom frame rate.",
+	"settings": {
+		"fps": {
+			"type": "int",
+			"name": "Target FPS",
+			"description": "Frames per second to run at. Your screen's refresh rate may cap this.",
+			"default": 120,
+			"min": 30,
+			"max": 360
+		}
+	}
+}
