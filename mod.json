@@ -1,0 +1,14 @@
+{
+    "geode": "5.8.2",
+    "gd": {
+        "android": "2.2081"
+    },
+    "id": "veylix.fps-unlocker",
+    "name": "FPS Unlocker",
+    "version": "v1.0.0",
+    "developer": "Veylix",
+    "description": "FPS Unlocker for Geometry Dash Android 64-bit.",
+    "tags": [
+        "performance"
+    ]
+}
