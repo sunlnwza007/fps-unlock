@@ -14,7 +14,3 @@ add_subdirectory(
 )
 
 setup_geode_mod(${PROJECT_NAME})
-
-if(ANDROID)
-    target_link_libraries(${PROJECT_NAME} PRIVATE c++)
-endif()
