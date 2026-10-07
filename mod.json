@@ -1,14 +1,34 @@
 {
-    "geode": "5.8.2",
-    "gd": {
-        "android": "2.2081"
-    },
-    "id": "veylix.fps-unlocker",
-    "name": "FPS Unlocker",
-    "version": "v1.0.0",
-    "developer": "Veylix",
-    "description": "FPS Unlocker for Geometry Dash Android 64-bit.",
-    "tags": [
-        "performance"
-    ]
+  "geode": "5.8.2",
+  "gd": {
+    "android": "2.2081"
+  },
+  "id": "veylix.fps-unlocker",
+  "name": "Veylix FPS Unlocker",
+  "version": "v1.0.0",
+  "developer": "Veylix",
+  "description": "Simple FPS and refresh-rate unlocker for Android.",
+  "settings": {
+    "target-hz": {
+      "type": "int",
+      "name": "Target FPS",
+      "description": "Refresh rate requested from Android.",
+      "default": 144,
+      "min": 60,
+      "max": 240,
+      "control": {
+        "slider": true,
+        "slider-step": 1,
+        "input": true,
+        "arrows": true,
+        "arrow-step": 1,
+        "big-arrows": true,
+        "big-arrow-step": 10
+      }
+    }
+  },
+  "tags": [
+    "performance",
+    "utility"
+  ]
 }
