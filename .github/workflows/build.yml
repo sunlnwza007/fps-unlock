@@ -18,8 +18,10 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         id: build
         with:
-          target: Android64
-          sdk: given
+  target: Android64
+  sdk: given
+  android-ndk-version: 26.3.11579264
+          
 
       - name: Upload mod
         uses: actions/upload-artifact@v4
