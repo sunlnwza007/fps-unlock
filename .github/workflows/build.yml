@@ -20,7 +20,6 @@ jobs:
         with:
           target: Android64
           sdk: given
-          android-ndk-version: 27.2.12479018
 
       - name: Upload mod
         uses: actions/upload-artifact@v4
