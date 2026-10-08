@@ -1,54 +1,33 @@
 #include <Geode/Geode.hpp>
-#include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/GJBaseGameLayer.hpp>
 
 using namespace geode::prelude;
 
-#ifdef GEODE_IS_ANDROID
+class $modify(VeylixTPS, GJBaseGameLayer) {
+    void update(float dt) {
+        static float accumulator = 0.f;
 
-#include <cocos2d.h>
+        auto tps = Mod::get()->getSettingValue<int64_t>("target-hz");
 
-static void setFPS() {
-    auto fps = Mod::get()->getSettingValue<int64_t>("target-hz");
+        if (tps < 60)
+            tps = 60;
 
-    if (fps < 60)
-        fps = 60;
+        if (tps > 240)
+            tps = 240;
 
-    auto interval = 1.0 / static_cast<double>(fps);
+        float step = 1.f / static_cast<float>(tps);
 
-    cocos2d::CCApplication::sharedApplication()
-        ->setAnimationInterval(interval);
+        accumulator += dt;
 
-    log::info("FPS Unlocker: animation interval set to {} FPS", fps);
-}
-
-#endif
-
-$on_mod(Loaded) {
-
-#ifdef GEODE_IS_ANDROID
-
-    setFPS();
-
-    listenForSettingChanges<int64_t>(
-        "target-hz",
-        [](int64_t) {
-            setFPS();
+        int steps = 0;
+        while (accumulator >= step && steps < 10) {
+            GJBaseGameLayer::update(step);
+            accumulator -= step;
+            steps++;
         }
-    );
-
-#endif
-}
-
-class $modify(FPSUnlockerMenuLayer, MenuLayer) {
-
-    bool init() {
-        if (!MenuLayer::init())
-            return false;
-
-#ifdef GEODE_IS_ANDROID
-        setFPS();
-#endif
-
-        return true;
     }
 };
+
+$on_mod(Loaded) {
+    log::info("Veylix TPS Unlocker loaded");
+}
